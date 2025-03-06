@@ -1,10 +1,13 @@
 package com.egg.biblioteca.controladores;
 
 
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -39,6 +42,31 @@ public class EditorialControlador {
         }        
         return "index.html";
     
+    }
+    @GetMapping("lista")
+    public String listar(ModelMap model) {
+        // List<Libro> libros = libroServicio.listarLibros();
+        // model.addAttribute("libros", libros);
+    
+        model.addAttribute("editoriales", editorialServicio.listarEditoriales()); //es lo mismo pero en una sola línea
+        return "editorial_list.html";
+    }
+    @GetMapping("/modificar/{id}")
+    public String modificar(@PathVariable UUID id, ModelMap model) {
+        model.put("editorial", editorialServicio.getOne(id));
+        return "editorial_modificar.html";
+    }
+
+    @PostMapping("{id}")
+    public String modificar(@PathVariable UUID id, String nombre, ModelMap model) {
+        try{
+            editorialServicio.modificarEditorial(id, nombre);
+            return "redirect:../lista";
+        }catch (MiException ex) {
+            model.put("error", ex.getMessage());
+            return "editorial_modificar.html";
+        }
+        
     }
 }
 

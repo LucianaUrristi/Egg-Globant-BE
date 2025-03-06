@@ -17,7 +17,7 @@ import java.util.UUID;
 public class AutorServicio {
 
     @Autowired
-        private AutorRepositorio autorRepositorio;
+    private AutorRepositorio autorRepositorio;
 
 
     @Transactional
@@ -65,6 +65,10 @@ public class AutorServicio {
             throw new MiException("El autor con el ID especificado no existe");
         }
 
+    }
+    @Transactional(readOnly = true)
+    public Autor getOne(UUID id) {
+        return autorRepositorio.findById(id).orElse(null);
     }
     
     private void validar(String nombre) throws MiException {

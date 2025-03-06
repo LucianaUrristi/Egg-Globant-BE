@@ -22,9 +22,11 @@ import java.util.UUID;
 public class LibroServicio {
 
     @Autowired
-        private LibroRepositorio libroRepositorio;
-        private AutorRepositorio autorRepositorio;
-        private EditorialRepositorio editorialRepositorio;
+    private LibroRepositorio libroRepositorio;
+    @Autowired
+    private AutorRepositorio autorRepositorio;
+    @Autowired
+    private EditorialRepositorio editorialRepositorio;
 
     @Transactional
     public void crearLibro(Long isbn, String titulo, Integer ejemplares, UUID idAutor, UUID idEditorial) throws MiException {
@@ -92,6 +94,11 @@ public class LibroServicio {
         libro.setEditorial(respuestaEditorial.get());
 
         libroRepositorio.save(libro);
+    }
+
+    @Transactional(readOnly = true)
+    public Libro getOne(Long isbn) {
+        return libroRepositorio.findById(isbn).orElse(null);
     }
 
     private void validar(Long isbn, String titulo, Integer ejemplares, UUID idAutor, UUID idEditorial) throws MiException {
