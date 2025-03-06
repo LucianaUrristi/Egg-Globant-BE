@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
+import com.egg.biblioteca.entidades.Libro;
 import com.egg.biblioteca.excepciones.MiException;
 import com.egg.biblioteca.servicios.AutorServicio;
 import com.egg.biblioteca.servicios.EditorialServicio;
@@ -82,7 +82,14 @@ public class LibroControlador {
 
     @GetMapping("/modificar/{isbn}")
     public String modificar(@PathVariable Long isbn, ModelMap model) {
+        Libro libro = libroServicio.getOne(isbn);
+
         model.put("libro", libroServicio.getOne(isbn));
+        model.addAttribute("autores", autorServicio.listarAutores());  // Agregar autores para que nos muestre la lista de autores
+        model.addAttribute("editoriales", editorialServicio.listarEditoriales());  // Agregar editoriales para que nos muestre la lista de autores
+
+        model.addAttribute("autorSeleccionado", libro.getAutor().getId());  // UUID del autor actual para que ya aparezca seleccionado
+        model.addAttribute("editorialSeleccionada", libro.getEditorial().getId());  // UUID de la editorial actual para que ya aparezca seleccionado
         return "libro_modificar.html";
     }
 

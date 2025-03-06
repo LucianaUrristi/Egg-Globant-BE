@@ -79,15 +79,24 @@
                     <input th:value="${libro.ejemplares}" type="number" class="form-control" name="ejemplares" placeholder="Cantidad de Ejemplares">
                 </div>
                 <div class="form-group my-3">
+                    <!-- th:selected lo vamos a usar para que nos mantenga la selección de libro y autor que ya tenía -->
                     <select name="idAutor">
-                        <option>Seleccionar Autor</option>
-                        <option th:each="autor : ${autores}" th:value="${autor.id}" th:text="${autor.nombre}">
+                        <option value="">Seleccione un autor</option>
+                        <th:block th:each="autor : ${autores}">
+                            <option th:value="${autor.id}" th:selected="${autor.id == autorSeleccionado}">
+                                [[${autor.nombre}]]
+                            </option>
+                        </th:block>
                     </select>
-                </div>
+                                    </div>
                 <div class="form-group my-3">
                     <select name="idEditorial">
-                        <option>Seleccionar Editorial</option>
-                        <option th:each="editorial : ${editoriales}" th:value="${editorial.id}" th:text="${editorial.nombre}">
+                        <option value="">Seleccione una editorial</option>
+                        <th:block th:each="editorial : ${editoriales}">
+                            <option th:value="${editorial.id}" th:selected="${editorial.id == editorialSeleccionada}">
+                                [[${editorial.nombre}]]
+                            </option>
+                        </th:block>
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary mt-3 botones">Actualizar</button>
