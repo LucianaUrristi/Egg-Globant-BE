@@ -94,7 +94,8 @@ public class LibroControlador {
     }
 
     @PostMapping("/modificar/{isbn}")
-    public String modificar(@PathVariable Long isbn, String titulo, Integer ejemplares, String idAutor, String idEditorial, ModelMap model) {
+    public String modificar(@PathVariable @RequestParam(required = false) Long isbn, @RequestParam String titulo, 
+    @RequestParam(required = false) Integer ejemplares, @RequestParam String idAutor, @RequestParam String idEditorial, ModelMap model) {
         try {
             UUID autorUUID = (idAutor != null && !idAutor.isEmpty()) ? UUID.fromString(idAutor) : null;
             UUID editorialUUID = (idEditorial != null && !idEditorial.isEmpty()) ? UUID.fromString(idEditorial) : null;
