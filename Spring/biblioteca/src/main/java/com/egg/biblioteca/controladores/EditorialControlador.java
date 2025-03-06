@@ -40,7 +40,7 @@ public class EditorialControlador {
             // Logger.getLogger(AutorControlador.class.getName()).log(Level.SEVERE, null, ex);
             return "editorial_form.html";
         }        
-        return "index.html";
+        return "inicio.html";
     
     }
     @GetMapping("lista")

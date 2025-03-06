@@ -41,7 +41,7 @@ public class AutorControlador {
             // Logger.getLogger(AutorControlador.class.getName()).log(Level.SEVERE, null, ex);
             return "autor_form.html";
         }        
-        return "index.html";
+        return "inicio.html";
     
     }
 

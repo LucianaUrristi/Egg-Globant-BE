@@ -68,7 +68,7 @@ public class LibroControlador {
 
             return "libro_form.html"; // volvemos a cargar el formulario.
         }
-        return "index.html";
+        return "inicio.html";
     }
     
     @GetMapping("lista")
