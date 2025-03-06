@@ -51,4 +51,4 @@ public class PortalControlador {
     
 }
 
-// LA VISTA DEL INDEX NO ES LA QUE DEBERIA
+
