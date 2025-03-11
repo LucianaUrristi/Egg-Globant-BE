@@ -30,7 +30,8 @@ public class SeguridadWeb {
         http
                 .authorizeHttpRequests((authorize) -> authorize
                         .requestMatchers("/admin/**").hasRole("ADMIN")                       
-                        .requestMatchers("/css/**", "/js/**", "/img/**").permitAll() //Quitar el "/**" ya que sino esto va a permitir que se pueda ingresar aunque no esté logueado
+                        .requestMatchers("/css/**", "/js/**", "/img/**").permitAll()//Quitar el "/**" ya que sino esto va a permitir que se 
+                                                                                                //pueda ingresar aunque no esté logueado
                         .requestMatchers("/login", "/register").permitAll() // Permitir acceso a login y registro
                         .anyRequest().authenticated() //Requiere autenticacion 
                 )
