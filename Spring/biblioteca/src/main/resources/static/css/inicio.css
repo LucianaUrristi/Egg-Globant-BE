@@ -10,6 +10,10 @@
     font-weight: 700;
 }
 
+.elementos{
+    margin-right: 50px;
+}
+
 .containerImg{
     width: 20%;
 }
@@ -18,8 +22,14 @@
     width: 40%;
     margin: auto;
 }
-
-.main{
+.tituloBiblioteca{
+    width: 80%;
+    text-align: center;
+    font-size: 40px;
+    margin-top: 80px;
+    font-weight: 500;
+}
+.header{
     background-image: url(../img/FondoZoom.jpg);
     background-size: cover;
     height: 400px;

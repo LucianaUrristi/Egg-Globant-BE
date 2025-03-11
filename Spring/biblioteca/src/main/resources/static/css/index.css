@@ -65,13 +65,6 @@
     align-items: center;
 }
 
-.boton{
-    background-color: #ffcb00;
-    box-shadow: 0px 2px 16px 4px rgba(0,0,0,0.36);
-    -webkit-box-shadow: 0px 2px 16px 4px rgba(0,0,0,0.36);
-    -moz-box-shadow: 0px 2px 16px 4px rgba(0,0,0,0.36);
-}
-
 .boton:hover{
     background-color: #ffcb00;
 }

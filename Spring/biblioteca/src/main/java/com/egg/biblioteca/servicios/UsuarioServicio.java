@@ -33,7 +33,7 @@ public class UsuarioServicio implements UserDetailsService{
         Usuario usuario = new Usuario();
         usuario.setNombre(nombre);
         usuario.setEmail(email);
-        usuario.setPassword(password);
+        usuario.setPassword(new BCryptPasswordEncoder().encode(password));
         usuario.setRol(Rol.USER);
         
 
@@ -48,7 +48,7 @@ public class UsuarioServicio implements UserDetailsService{
     }
 
     @Transactional
-    public void modificarLibro(String nombre, String email, String password, String password2) throws MiException {
+    public void modificarUsuario(String nombre, String email, String password, String password2) throws MiException {
 
         validar(nombre, email, password, password2);
 
