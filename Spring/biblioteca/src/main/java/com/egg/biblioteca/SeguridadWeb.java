@@ -32,7 +32,7 @@ public class SeguridadWeb {
                         .requestMatchers("/admin/**").hasRole("ADMIN")                       
                         .requestMatchers("/css/**", "/js/**", "/img/**").permitAll()//Quitar el "/**" ya que sino esto va a permitir que se 
                                                                                                 //pueda ingresar aunque no esté logueado
-                        .requestMatchers("/login", "/registrar").permitAll() // Permitir acceso a login y registro
+                        .requestMatchers("/login","/registro", "/registrar").permitAll() // Permitir acceso a login y registro
                         .anyRequest().authenticated() //Requiere autenticacion 
                 )
                 .formLogin((form) -> form
