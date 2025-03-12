@@ -1,32 +1,26 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-    <head th:replace="~{fragments/head :: head}"></head>
-<!-- MODIFICAMOS NUESTRO ARCHIVO INDEX PARA QUE SEA LA VISTA AL INGRESAR A LA PÁGINA SIN LOGGEARNOS Y CREAMOS UN ARCHIVO INICIO PARA 
-    LA VISTA QUE VEREMOS AL INICIAR SESION -->
+
+<head th:replace="~{fragments/head :: head}"></head>
     <body>
         <nav th:replace="~{fragments/navbar :: nav}"></nav>
-        
-        <div th:if="${exito}!=null" class="card text-white bg-success mb-3 mt-3 mensajeExito" >
-            <div class="card-body">
-                <h5 class="card-title">Exito</h5>
-                <p class="card-text" th:text="${exito}"></p>
-            </div>
-        </div>
-        <div th:if="${error}!=null" class="card text-white bg-danger mb-3 mensajeError" >
-            <div class="card-body">
-                <h5 class="card-title">Error ðŸ‘Ž</h5>
-                <p class="card-text" th:text="${error}"></p>
-            </div>
-        </div>
-        
         <header class="header">
             <section class="contenedorMain">
                 <div class="tituloBiblioteca">
-                    <a class="navbar-brand" href="#">BIBLIOTECA EGG</a>
+                    <a class="navbar-brand" th:text="'Error ' + ${codigo}">BIBLIOTECA EGG</a>
+                    <p class="tituloLibros" th:text="${mensaje}"></p>
+                    
                 </div>
+                <section class="text-center container">
+			        <div class="row mt-3">
+                        <div class="divVolver">
+                            <a th:href="@{/inicio}" class="btn btn-secondary my-2 botonVolver botones">Volver</a>
+                        </div>
+			        </div>
+		        </section>
                 <div class="container contenedorLibros">
-                    <p class="tituloLibros">Encontrá todos los Libros Aquí!</p>
-
+                    <!-- agregamos "and not #strings.contains(#httpServletRequest.requestURI, 'error')} a th:if para que no se muestre en la página de error" -->
+                    <p class="tituloLibros" th:if="${session.usuariosession != null and not #strings.contains(#httpServletRequest.requestURI, 'error')}" th:text=" 'Hola de vuelta '+ ${session.usuariosession.nombre} "></p>
                 </div>
                 <div class="bg-circle-1 bg-circle"></div>
                 <div class="bg-circle-2 bg-circle"></div>
@@ -34,7 +28,6 @@
                 <div class="bg-circle-4 bg-circle"></div>
             </section>
         </header>
-        
 
         <footer class="text-muted py-5">
             <div class="containerFooter">

@@ -26,6 +26,7 @@ public class AutorControlador {
     @Autowired 
     private AutorServicio autorServicio;
 
+    
     @GetMapping("/registrar") // localhost:8080/autor/registrar
     public String registrar() {
         return "autor_form.html";

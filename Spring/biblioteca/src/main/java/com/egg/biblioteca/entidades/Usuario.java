@@ -25,6 +25,7 @@ public class Usuario {
     private Rol rol;
 
     
+
     public Usuario() {
     }
 

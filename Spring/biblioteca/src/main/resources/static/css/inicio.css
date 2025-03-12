@@ -22,6 +22,7 @@
     width: 40%;
     margin: auto;
 }
+
 .tituloBiblioteca{
     width: 80%;
     text-align: center;
@@ -29,11 +30,32 @@
     margin-top: 80px;
     font-weight: 500;
 }
+
 .header{
-    background-image: url(../img/FondoZoom.jpg);
+    background-image: url(../img/FondoZoom_2.jpg);
     background-size: cover;
-    height: 400px;
+    height: 550px;
     display: flex;
+    justify-content: end;
+}
+
+.contenedorLibros{
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.tituloLibros{
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.contenedorMain{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
     align-items: center;
 }
 
@@ -43,24 +65,16 @@
     align-items: center;
 }
 
+.boton:hover{
+    background-color: #ffcb00;
+}
+.boton:active{
+    box-shadow: none;
+}
+
 .boton{
     background-color: #ffcb00;
     box-shadow: 0px 2px 16px 4px rgba(0,0,0,0.36);
     -webkit-box-shadow: 0px 2px 16px 4px rgba(0,0,0,0.36);
     -moz-box-shadow: 0px 2px 16px 4px rgba(0,0,0,0.36);
-    margin-right: 10px;
-    margin-left: -10px;
-}
-
-.botonCargar{
-    box-shadow: 0px 2px 16px 4px rgba(0,0,0,0.36);
-    -webkit-box-shadow: 0px 2px 16px 4px rgba(0,0,0,0.36);
-    -moz-box-shadow: 0px 2px 16px 4px rgba(0,0,0,0.36);
-}
-
-.boton:active{
-    box-shadow: none;
-}
-.botonCargar:active{
-    box-shadow: none;
 }

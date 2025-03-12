@@ -1,41 +1,56 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <head th:replace="~{fragments/head :: head}"></head>
-
     <body>
+
         <nav th:replace="~{fragments/navbar :: nav}"></nav>
 
         <div class="container m-5" >
 
             <table class="table table-dark">
-                <thead>
-                    <tr>
-                        <th scope="col">Id del Autor</th>
-                        <th scope="col">Nombre del Autor</th>
-                        <th scope="col" sec:authorize="hasRole('ADMIN')">Acciones</th>
+                <thead class="align-items-center">
+                    <tr >
+                        <th scope="col">Id del Usuario</th>
+                        <th scope="col">Nombre</th>
+                        <!-- <th scope="col">Foto de Perfil</th> -->
+                        <th scope="col">Rol</th>
+                        <th scope="col">Cambiar Rol</th>
+                        <th scope="col">Modificar</th>
 
                     </tr>
                 </thead>
-                <tbody th:each="autor : ${autores}"> 
+                <tbody th:each="usuario : ${usuarios}"> 
                     <tr>
-                        <th scope="row" th:text="${autor.id}"></th>
-                        <td th:text="${autor.nombre}"></td>
+                        <th scope="row" th:text="${usuario.id}"></th>
+                        <td th:text="${usuario.nombre}"></td>
+                        <!-- <td 
+                            <a><img th:if="${usuario.imagen != null}" class="logo" th:src="@{/imagen/perfil/__${usuario.id}__}" ></a>
+                        </td> -->
+
+                        <td th:text="${usuario.rol}"></td>
+
                         <td>
-                            <a sec:authorize="hasRole('ADMIN')" th:href= "@{/autor/modificar/__${autor.id}__}"><i class="fas fa-feather-alt">  </i> Modificar </a>
+                            <a th:href= "@{/admin/modificarRol/__${usuario.id}__}"><i class="fas fa-feather-alt"></i>Cambiar</a>
                         </td>
+
+                        <td>
+                            <a th:href= "@{/usuario/modificar/__${usuario.id}__}"><i class="fas fa-feather-alt"></i> Modificar</a>
+                        </td>
+
                     </tr>
+
                 </tbody>
             </table>
 
             <div th:if="${exito}!=null" class="card text-white bg-success mb-3 mt-3 mensajeExito" >
                 <div class="card-body">
-                    <h5 class="card-title">Exito ðŸ‘ </h5>
+                    <h5 class="card-title">Exito ð</h5>
                     <p class="card-text" th:text="${exito}"></p>
                 </div>
             </div>
             <div th:if="${error}!=null" class="card text-white bg-danger mb-3 mensajeError" >
                 <div class="card-body">
-                    <h5 class="card-title">Error ðŸ‘Ž</h5>
+                    <h5 class="card-title">Error ð</h5>
                     <p class="card-text" th:text="${error}"></p>
                 </div>
             </div>
@@ -43,7 +58,7 @@
             <section class="py-5 text-center container">
                 <div class="row py-lg-5">
                     <div class="col-lg-6 col-md-8 mx-auto">
-                        <a th:href="@{/inicio}" class="btn btn-primary my-2">Volver</a>
+                        <a th:href="@{/admin/dashboard }" class="btn btn-primary my-2">Volver</a>
                         </p>
                     </div>
                 </div>

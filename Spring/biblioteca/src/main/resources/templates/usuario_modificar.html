@@ -1,37 +1,40 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
     <head th:replace="~{fragments/head :: head}"></head>
-
     <body>
 
         <nav th:replace="~{fragments/navbar :: nav}"></nav>
-        
         <div class="container-fluid m-5 contenedor">
-            <!-- ACA DEBES INCORPORAR TH: class="formulario"  th:action="@{/editorial/registro}" method="POST"-->
-            <form class="formulario"  th:action="@{/editorial/registro}" method="POST">
+
+            <form class="formulario" th:action="@{/perfil/__${usuario.id}__}" method="POST" enctype="multipart/form-data">
+
+                <input hidden th:value="${id}" name="id">
+
                 <div class="form-group my-3">
-                    <h5 class="card-title">Cargar Editorial</h5> 
-                    <!-- Agregamos name="nombre" -->
-                    <input type="text" class="form-control" name="nombre" placeholder="Nombre del Autor">
+                    <h3 class="card-title">Editar Usuario</h3>
+                </div>
+                <div class="form-group my-3">
+                    <input type="text" class="form-control" name="nombre"  th:value="${usuario.nombre}">
+                </div>
+                <div class="form-group my-3">
+                    <input type="email" class="form-control" name="email"  th:value="${usuario.email}">
+                </div>
+                <!-- <div class="form-group my-3">
+                    <input type="file" class="form-control" name="archivo" >
+                </div> -->
+                <div class="form-group my-3">
+                    <input type="password" class="form-control" name="password" placeholder="PASSWORD">
+                </div>
+                <div class="form-group my-3">
+                    <input type="password" class="form-control" name="password2" placeholder="REPETIR PASSWORD" >
                 </div>
 
-                <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError" >
-                    <div class="card-body">
-                        <h5 class="card-title">Error 👎</h5>
-                        <p class="card-text" th:text="${error}"></p>
-                    </div>
-                </div>
-                <div th:if="${exito != null}" class="card text-white bg-success mb-3 mt-3 mensajeExito" >
-                    <div class="card-body">
-                        <h5 class="card-title">Exito!</h5>
-                        <p class="card-text" th:text="${exito}"></p>
-                    </div>
-                </div>
 
-                <button type="submit" class="btn btn-primary mt-3 botones">Guardar</button>
+                <button type="submit" class="btn btn-primary mt-3 botones">Actualizar</button>
             </form>
 
-                    <section class=" text-center container">
+
+            <section class=" text-center container">
                 <div class="row mt-3">
                     <div class="divVolver">
                         <a th:href="@{/inicio}" class="btn btn-secondary my-2 botonVolver botones">Volver</a>
