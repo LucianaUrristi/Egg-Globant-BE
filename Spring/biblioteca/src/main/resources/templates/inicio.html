@@ -8,7 +8,7 @@
     LA VISTA QUE VEREMOS AL INICIAR SESION -->
     <body>
         <nav th:replace="~{fragments/navbar :: nav}"></nav>
-        
+        <div th:replace="~{fragments/mensajeEE :: div}"></div>
 
         <header class="header">
             <section class="contenedorMain">
@@ -16,8 +16,14 @@
                     <a class="navbar-brand" href="#">BIBLIOTECA EGG</a>
                 </div>
                 <div class="container contenedorLibros">
-                    <p class="tituloLibros" th:if="${session.usuariosession != null}" th:text=" 'Hola de vuelta '+ ${session.usuariosession.nombre} "></p>
-                    <a class="btn btn-xl mt-2 boton">Ver Listado</a>
+                    <p class="tituloLibros" th:if="${session != null and session.usuariosession != null}" th:text="'Hola de vuelta ' + ${session.usuariosession.nombre}"></p>
+
+                    <!-- <a class="btn btn-xl mt-2 boton">Ver Listado</a> -->
+                </div>
+                <div class="imagenContainer">
+                    <a class="d-flex align-items-center">
+                        <img class="logo" th:src="@{/imagen/perfil/__${session.usuariosession.id}__}"alt="Img perfil">
+                    </a>
                 </div>
                 <div class="bg-circle-1 bg-circle"></div>
                 <div class="bg-circle-2 bg-circle"></div>
@@ -26,15 +32,7 @@
             </section>
         </header>
 
-        <footer class="text-muted py-5">
-            <div class="containerFooter">
-                <p class="mb-1">Album example is &copy; Bootstrap,<br>but please download and customize it for yourself!</p>
-                <p class="mb-0">New to Bootstrap? <a href="/"><br>Visit the homepage</a> or read our <a href="../getting-started/introduction/">getting started guide</a>.</p>
-                <p class="float-end mb-1">
-                    <a href="#" style="text-decoration:none"><span>⬆️</span> Back to top</a>
-                </p>
-            </div>
-        </footer>
+        <footer th:replace="~{fragments/footer :: footer}"></footer>
 
 
 

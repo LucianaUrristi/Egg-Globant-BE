@@ -16,7 +16,10 @@ public class ErroresControlador implements ErrorController {
         String errorMsg = "";
 
         Integer httpErrorCode = getErrorCode(httpRequest);
-
+        if (httpErrorCode == -1) {
+            httpErrorCode = 500; // Asigna un código de error por defecto
+        }
+        
         switch (httpErrorCode) {
             case 400: {
                 errorMsg = "El recurso solicitado no existe.";
@@ -51,6 +54,9 @@ public class ErroresControlador implements ErrorController {
 
     private int getErrorCode(HttpServletRequest httpRequest) {
         Object statusCode = httpRequest.getAttribute("jakarta.servlet.error.status_code");
+        if (statusCode == null) {
+            statusCode = httpRequest.getAttribute("javax.servlet.error.status_code"); //versión vieja
+        }
         if (statusCode instanceof Integer) {
             return (Integer) statusCode;
         }
@@ -58,8 +64,4 @@ public class ErroresControlador implements ErrorController {
         return -1; // O puedes usar otro valor por defecto adecuado
     }
 
-  
-    public String getErrorPath() {
-        return "/error.html";
-    }
 }

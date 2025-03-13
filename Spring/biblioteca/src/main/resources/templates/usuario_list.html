@@ -4,7 +4,7 @@
     <body>
 
         <nav th:replace="~{fragments/navbar :: nav}"></nav>
-
+        <div th:replace="~{fragments/mensajeEE :: div}"></div>
         <div class="container m-5" >
 
             <table class="table table-dark">
@@ -12,7 +12,7 @@
                     <tr >
                         <th scope="col">Id del Usuario</th>
                         <th scope="col">Nombre</th>
-                        <!-- <th scope="col">Foto de Perfil</th> -->
+                        <th scope="col">Foto de Perfil</th>
                         <th scope="col">Rol</th>
                         <th scope="col">Cambiar Rol</th>
                         <th scope="col">Modificar</th>
@@ -23,9 +23,9 @@
                     <tr>
                         <th scope="row" th:text="${usuario.id}"></th>
                         <td th:text="${usuario.nombre}"></td>
-                        <!-- <td 
+                        <td 
                             <a><img th:if="${usuario.imagen != null}" class="logo" th:src="@{/imagen/perfil/__${usuario.id}__}" ></a>
-                        </td> -->
+                        </td>
 
                         <td th:text="${usuario.rol}"></td>
 
@@ -34,7 +34,7 @@
                         </td>
 
                         <td>
-                            <a th:href= "@{/usuario/modificar/__${usuario.id}__}"><i class="fas fa-feather-alt"></i> Modificar</a>
+                            <a th:href="@{/admin/usuario/{id}(id=${usuario.id})}"><i class="fas fa-feather-alt"></i> Modificar</a>
                         </td>
 
                     </tr>
@@ -42,18 +42,7 @@
                 </tbody>
             </table>
 
-            <div th:if="${exito}!=null" class="card text-white bg-success mb-3 mt-3 mensajeExito" >
-                <div class="card-body">
-                    <h5 class="card-title">Exito ð</h5>
-                    <p class="card-text" th:text="${exito}"></p>
-                </div>
-            </div>
-            <div th:if="${error}!=null" class="card text-white bg-danger mb-3 mensajeError" >
-                <div class="card-body">
-                    <h5 class="card-title">Error ð</h5>
-                    <p class="card-text" th:text="${error}"></p>
-                </div>
-            </div>
+            
 
             <section class="py-5 text-center container">
                 <div class="row py-lg-5">
@@ -66,15 +55,7 @@
 
         </div>
 
-        <footer class="text-muted py-5">
-            <div class="containerFooter">
-                <p class="mb-1">Album example is &copy; Bootstrap,<br>but please download and customize it for yourself!</p>
-                <p class="mb-0">New to Bootstrap? <a href="/"><br>Visit the homepage</a> or read our <a href="../getting-started/introduction/">getting started guide</a>.</p>
-                <p class="float-end mb-1">
-                    <a href="#" style="text-decoration:none"><span>⬆️</span> Back to top</a>
-                </p>
-            </div>
-        </footer>
+        <footer th:replace="~{fragments/footer :: footer}"></footer>
 
 
 

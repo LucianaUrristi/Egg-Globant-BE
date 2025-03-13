@@ -19,9 +19,9 @@
                 <div class="form-group my-3">
                     <input type="email" class="form-control" name="email"  th:value="${usuario.email}">
                 </div>
-                <!-- <div class="form-group my-3">
+                <div class="form-group my-3">
                     <input type="file" class="form-control" name="archivo" >
-                </div> -->
+                </div>
                 <div class="form-group my-3">
                     <input type="password" class="form-control" name="password" placeholder="PASSWORD">
                 </div>
@@ -33,25 +33,19 @@
                 <button type="submit" class="btn btn-primary mt-3 botones">Actualizar</button>
             </form>
 
+            <div th:replace="~{fragments/mensajeEE :: div}"></div>
 
             <section class=" text-center container">
                 <div class="row mt-3">
                     <div class="divVolver">
-                        <a th:href="@{/inicio}" class="btn btn-secondary my-2 botonVolver botones">Volver</a>
+                        <a sec:authorize="hasRole('ADMIN')" th:href="@{/admin/usuarios}" class="btn btn-secondary my-2 botonVolver botones">Volver</a>
+                        <a sec:authorize="hasRole('USER')" th:href="@{/inicio}" class="btn btn-secondary my-2 botonVolver botones">Volver</a>
                     </div>
                 </div>
             </section>
         </div>
 
-        <footer class="text-muted py-5">
-            <div class="containerFooter">
-                <p class="mb-1">Album example is &copy; Bootstrap,<br>but please download and customize it for yourself!</p>
-                <p class="mb-0">New to Bootstrap? <a href="/"><br>Visit the homepage</a> or read our <a href="../getting-started/introduction/">getting started guide</a>.</p>
-                <p class="float-end mb-1">
-                    <a href="#" style="text-decoration:none"><span>⬆️</span> Back to top</a>
-                </p>
-            </div>
-        </footer>
+        <footer th:replace="~{fragments/footer :: footer}"></footer>
 
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
