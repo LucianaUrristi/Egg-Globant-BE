@@ -23,8 +23,8 @@
                     <tr>
                         <th scope="row" th:text="${usuario.id}"></th>
                         <td th:text="${usuario.nombre}"></td>
-                        <td 
-                            <a><img th:if="${usuario.imagen != null}" class="logo" th:src="@{/imagen/perfil/__${usuario.id}__}" ></a>
+                        <td> 
+                            <a><img th:if="${usuario.imagen != null}" class="img_user" th:src="@{/imagen/perfil/__${usuario.id}__}" ></a>
                         </td>
 
                         <td th:text="${usuario.rol}"></td>
