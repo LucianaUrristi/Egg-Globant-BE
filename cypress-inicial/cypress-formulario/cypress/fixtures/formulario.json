@@ -1,0 +1,11 @@
+{
+    "fullname": "Juan Pérez",
+    "emailValid": "juan.perez@example.com",
+    "emailInvalid": "ana.gomez.com",
+    "phone": "1140404040",
+    "gender": "Male",
+    "experience": "1",
+    "skills": ["Automation testing", "Functional testing", "API testing"],
+    "tool": "Appium",
+    "comment": "Este es un comentario de prueba."
+}

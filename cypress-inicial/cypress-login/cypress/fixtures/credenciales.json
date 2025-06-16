@@ -1,0 +1,7 @@
+{
+    "usuarios": [
+        { "usuario": "miNombre", "clave": "pwd" },
+        { "usuario": "admin", "clave": "pwd" },
+        { "usuario": "tester", "clave": "pwd" }
+    ]
+}

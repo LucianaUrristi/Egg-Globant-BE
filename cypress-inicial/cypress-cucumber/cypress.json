@@ -1,0 +1,4 @@
+{
+  "baseUrl": "https://example.cypress.io/todo#",
+  "testFiles": "**/*.feature"
+}
